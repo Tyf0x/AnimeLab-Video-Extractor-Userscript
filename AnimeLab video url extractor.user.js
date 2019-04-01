@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         AnimeLab video url extractor
 // @namespace    https://github.com/Tyf0x
-// @version      0.2
+// @version      0.3
 // @description  Copy the animelab url to the clipboard
 // @author       Tyf0x
 // @match        https://www.animelab.com/player/*
 // @require      https://code.jquery.com/jquery-3.3.1.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js
-// @resource     css https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.
+// @resource     css https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css
 // @updateURL    https://github.com/Tyf0x/AnimeLab-Video-Extractor-Userscript/raw/master/AnimeLab%20video%20url%20extractor.user.js
 // @downloadURL  https://github.com/Tyf0x/AnimeLab-Video-Extractor-Userscript/raw/master/AnimeLab%20video%20url%20extractor.user.js
 // @grant        GM_setClipboard
