@@ -3,7 +3,7 @@
 // ==UserScript==
 // @name         AnimeLab video url extractor
 // @namespace    https://github.com/Tyf0x
-// @version      0.3
+// @version      0.4
 // @description  Copy the animelab url to the clipboard
 // @author       Tyf0x
 // @match        https://www.animelab.com/player/*
