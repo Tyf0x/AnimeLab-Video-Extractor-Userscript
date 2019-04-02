@@ -3,7 +3,7 @@
 // ==UserScript==
 // @name         AnimeLab video url extractor
 // @namespace    https://github.com/Tyf0x
-// @version      0.4
+// @version      0.5
 // @description  Copy the animelab url to the clipboard
 // @author       Tyf0x
 // @match        https://www.animelab.com/player/*
@@ -41,7 +41,9 @@
         
         // Document Ctrl + C
         $(document).keydown(function(e) {
-            if (ctrlDown && (e.keyCode == cKey)) console.log("Document catch Ctrl+C");
+            if (ctrlDown && (e.keyCode == cKey)){
+                saveVideoUrlToClip();
+            }
         });
     }
 
