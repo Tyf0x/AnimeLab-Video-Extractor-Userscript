@@ -1,9 +1,8 @@
-
 /*jshint esversion: 6 */
 // ==UserScript==
 // @name         AnimeLab video url extractor
 // @namespace    https://github.com/Tyf0x
-// @version      0.5
+// @version      0.6
 // @description  Copy the animelab url to the clipboard
 // @author       Tyf0x
 // @match        https://www.animelab.com/player/*
@@ -18,7 +17,7 @@
 // @run-at       document-end
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     GM_addStyle(GM_getResourceText("css"));
@@ -27,35 +26,38 @@
 
     saveVideoUrlToClip();
 
-    function registerKeyboardShortcut(){
+    function registerKeyboardShortcut() {
         let ctrlDown = false,
-        ctrlKey = 17,
-        cmdKey = 91,
-        cKey = 67;
+            ctrlKey = 17,
+            cmdKey = 91,
+            cKey = 67;
 
-        $(document).keydown(function(e) {
-            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;
-        }).keyup(function(e) {
-            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;
+        $(document).keydown(function (e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey)
+                ctrlDown = true;
+        }).keyup(function (e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey)
+                ctrlDown = false;
         });
-        
+
         // Document Ctrl + C
-        $(document).keydown(function(e) {
-            if (ctrlDown && (e.keyCode == cKey)){
+        $(document).keydown(function (e) {
+            if (ctrlDown && (e.keyCode == cKey))
                 saveVideoUrlToClip();
-            }
         });
     }
 
-    function saveVideoUrlToClip(){
+    function saveVideoUrlToClip() {
         let videoDom = document.querySelector("#video-component-wrapper video");
         toastr.options.closeButton = true;
-    
-        if(videoDom !== null){
-            GM_setClipboard(videoDom.getAttribute("src"), { type: 'text', mimetype: 'text/plain'});
+
+        if (videoDom !== null) {
+            GM_setClipboard(videoDom.getAttribute("src"), {
+                type: 'text',
+                mimetype: 'text/plain'
+            });
             toastr.success("Video url copied!");
-        }else{
+        } else
             toastr.error("Couldn't find the video DOM.");
-        }
     }
 })();
