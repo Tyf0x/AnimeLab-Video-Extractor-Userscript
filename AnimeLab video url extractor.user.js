@@ -1,3 +1,5 @@
+
+/*jshint esversion: 6 */
 // ==UserScript==
 // @name         AnimeLab video url extractor
 // @namespace    https://github.com/Tyf0x
@@ -21,13 +23,37 @@
 
     GM_addStyle(GM_getResourceText("css"));
 
-    let videoDom = document.querySelector("#video-component-wrapper video");
-    toastr.options.closeButton = true;
+    registerKeyboardShortcut();
 
-    if(videoDom !== null){
-        GM_setClipboard(videoDom.getAttribute("src"), { type: 'text', mimetype: 'text/plain'});
-        toastr.success("Video url copied!");
-    }else{
-        toastr.error("Couldn't find the video DOM.");
+    saveVideoUrlToClip();
+
+    function registerKeyboardShortcut(){
+        let ctrlDown = false,
+        ctrlKey = 17,
+        cmdKey = 91,
+        cKey = 67;
+
+        $(document).keydown(function(e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;
+        }).keyup(function(e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;
+        });
+        
+        // Document Ctrl + C
+        $(document).keydown(function(e) {
+            if (ctrlDown && (e.keyCode == cKey)) console.log("Document catch Ctrl+C");
+        });
+    }
+
+    function saveVideoUrlToClip(){
+        let videoDom = document.querySelector("#video-component-wrapper video");
+        toastr.options.closeButton = true;
+    
+        if(videoDom !== null){
+            GM_setClipboard(videoDom.getAttribute("src"), { type: 'text', mimetype: 'text/plain'});
+            toastr.success("Video url copied!");
+        }else{
+            toastr.error("Couldn't find the video DOM.");
+        }
     }
 })();
